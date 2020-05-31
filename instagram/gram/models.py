@@ -50,3 +50,39 @@ class User(models.Model):
 
     def __str__(self):
         return self.first_name
+
+class Image(models.Model):
+    photos = models.ImageField(upload_to= 'images/')
+    image_id = models.IntegerField(primary_key = True)
+    image_name = models.CharField(max_length = 40)
+    description = models.CharField(max_length = 100)
+    location = models.ForeignKey('Location', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    post_date = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    @classmethod
+    def display_all_images(cls):
+        images = cls.objects.all()
+        return images
+
+    @classmethod
+    def get_image_by_id(cls,id):
+        images = cls.objects.get(id = id)
+        return images
+
+    @classmethod
+    def filter_by_location(cls,location_term):
+        locations = cls.objects.filter(location__i_location__icontains=location_term)
+        return locations
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        images = cls.objects.filter(category__i_category__icontains=search_term)
+        return images
