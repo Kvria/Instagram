@@ -35,7 +35,39 @@ class LocationTestCase(TestCase):
 
     # Tests whether a user can search by location
     def test_search_by_location(cls):
-        Location.objects.filter(location__i_category__icontains='nairobi')
-        return self.nairobi
+        search_location = Location.objects.filter(location__i_location__icontains='nairobi')
+        self.assertEqual(search_location)
 
+    class CategoryTestClass(TestCase):
+    # Set up method
+    def setUp(self):
+        self.category = Category(i_category='Landscape')
+
+    # Testing instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.category,Category))
+
+    # Testing Save method
+    def test_save_method(self):
+        self.category.save_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories)>0)
+
+    # Testing Delete method
+    def test_delete_method(self):
+        self.category.delete_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories)<1)
+
+    # Tests whether the category name is updated
+    def test_update_category(self):
+        self.travel.save_category()
+        self.travel.update_category(self.food.id,'food')
+        new_update = Location.objects.get(name = "food")
+        self.assertEqual(new_update.name, 'food')
+
+    # Tests whether a user can search by category
+    def test_search_by_category(cls):
+        search_category = Location.objects.filter(category__i_category__icontains='music')
+        self.assertEqual(search_category)
 
