@@ -21,3 +21,24 @@ class Category(models.Model):
     def display_all_categories(cls):
         return cls.objects.all()
 
+class Location(models.Model):
+    location_name = models.CharField(max_length = 30)
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.location_name
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    @classmethod
+    def update_location(id,value):
+        Location.objects.filter(id = id).update(name = value)
+
+    @classmethod
+    def display_all_locations(cls):
+        return cls.objects.all()
+
