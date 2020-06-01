@@ -55,9 +55,10 @@ class Image(models.Model):
     photos = models.ImageField(upload_to= 'images/')
     image_id = models.IntegerField(primary_key = True)
     image_name = models.CharField(max_length = 40)
-    description = models.CharField(max_length = 100)
-    location = models.ForeignKey('Location', on_delete=models.CASCADE)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    image_caption = models.CharField(max_length = 10000)
+    profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    likes = models.IntegerField()
+    comments = models.CharField(max_length = 10000)
     post_date = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
