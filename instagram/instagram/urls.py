@@ -17,7 +17,9 @@ from django.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^accounts/', include('registration.backends.simple.urls'),
     url(r'^admin/', admin.site.urls),
-    url(r'^register/', v.register, none="register"),
-    url(r'^/', include("django.contrib.auth.urls"))
+    url(r'',include('gram.urls'))
+    url(r'^logout/$', views.logout, {"next_page": '/'}),
+
 ]
