@@ -15,3 +15,9 @@ def welcome(request):
     else:
         form = SignupForm()
     return render(request,'registration/login.html', {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    current_user = request.user
+    pics = Image.objects.all()
+    profile = Profile.objects.all()
