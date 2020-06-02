@@ -1,0 +1,29 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand brand" href="{% url 'welcome' %}" id="logo" style="color:rgb(27, 26, 26)"><i class="fab fa-instagram"></i> <span>|</span> Instagram</a>
+      </div>
+       <!-- Adding a search form  -->
+       <div class="col-sm-4 col-md-4">
+  
+        <form class="navbar-form" role="search" action="{% url 'search_users' %}">
+  
+          <div class="input-group search">
+            <input type="text" class="form-control" placeholder='search...' name="user_search" style="max-width:215px; height: 28px; background-color:rgb(250, 250, 250);line-height: 38px; text-align: center;">
+          </div>
+  
+        </form>
+      </div>
+      <div class="col-md-2 col-lg-2 icons" >
+  
+          <a class="navbar-brand" href="{% url 'welcome' %}""><span class="fas fa-compass"></span></a>
+          <a class="navbar-brand" href="{% url 'welcome' %}""><span class="fas fa-heart"></span></a>
+          <a class="navbar-brand" href="/profile"><span class="fas fa-user"></span></a>
+          <a class="navbar-brand" href="/accounts/login"><span class="fas fa-sign-out-alt"></span></a>
+          <a class="navbar-brand" href="{%url 'new_post'%}">Create Post</a>
+      </div>
+      
+  <div class="col-md-3 col-lg-3"></div>
+      <!-- search form end -->
+    </div>
+  </nav>
