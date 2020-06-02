@@ -8,3 +8,10 @@ from .form import *
 def index(request):
     images=Image.objects.all()
     return render(request,'index.html',{"images":images})
+
+def welcome(request):
+    if request.user.is_authenticated():
+        return redirect('index')
+    else:
+        form = SignupForm()
+    return render(request,'registration/login.html', {"form":form})
