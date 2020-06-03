@@ -64,4 +64,4 @@ def comment(request,image_id):
    else:
        form = CommentForm()
 
-   return render(request, 'comment.html', locals())
+   return render(request, 'comments.html', locals())
