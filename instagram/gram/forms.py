@@ -27,5 +27,9 @@ class CommentsForm(forms.ModelForm):
        model = Comment
        exclude = ['image','commenter']
 
+class Uploads(forms.ModelForm):
+    class Meta:
+        model=Image
+        exclude = ['user_id']
         
         
