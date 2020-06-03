@@ -11,7 +11,7 @@ def index(request):
 
 def welcome(request):
     if request.user.is_authenticated():
-        return redirect('index')
+        return redirect('home')
     else:
         form = SignupForm()
     return render(request,'registration/login.html', {"form":form})
