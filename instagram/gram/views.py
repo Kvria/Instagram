@@ -35,8 +35,33 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
 
     context = {
-            'u_form': u_form,
+            'u_form': u_form
 
     }
 
     return render(request, 'registration/profile.html',locals())
+
+def comment(request,image_id):
+   current_user=request.user
+   image = Image.objects.get(id=image_id)
+   profile_user = User.objects.get(username=current_user)
+   the_comments = Comment.objects.all()
+   print(the_comments)
+   if request.method == 'POST':
+       form = CommentForm(request.POST)
+       if form.is_valid():
+           comment = form.save(commit=False)
+           comment.image = image
+           comment.commenter = request.user
+
+           commentf.save()
+
+           print(the_comments)
+
+
+       return redirect(instagram)
+
+   else:
+       form = CommentForm()
+
+   return render(request, 'comment.html', locals())

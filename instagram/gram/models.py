@@ -47,5 +47,5 @@ class Comment(models.Model):class Comment(models.Model):
         return the_comments
 
     def __str__(self):
-        return self.comment_itself
+        return self.comment
     
