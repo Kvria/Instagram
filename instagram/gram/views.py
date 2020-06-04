@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from . models import *
-from .forms import *
+from .models import Image,Profile,Comment,User
+from .forms import SignupForm, UserUpdateForm, ProfileUpdateForm, CommentsForm, Uploads
 
 # Create your views here.
 @login_required(login_url = "accounts/login")
@@ -11,7 +11,7 @@ def index(request):
 
 def welcome(request):
     if request.user.is_authenticated():
-        return redirect('home')
+        return redirect(index)
     else:
         form = SignupForm()
     return render(request,'registration/login.html', {"form":form})
@@ -48,29 +48,29 @@ def comment(request,image_id):
    the_comments = Comment.objects.all()
    print(the_comments)
    if request.method == 'POST':
-       form = CommentForm(request.POST)
+       form = CommentsForm(request.POST)
        if form.is_valid():
            comment = form.save(commit=False)
            comment.image = image
            comment.commenter = request.user
 
-           commentf.save()
+           comment.save()
 
            print(the_comments)
 
 
-       return redirect(instagram)
+       return redirect(index)
 
    else:
-       form = CommentForm()
+       form = CommentsForm()
 
    return render(request, 'comments.html', locals())
 
 def search_users(request):
 
-    if 'user' in request.GET and request.GET["user"]:
-        search_term = request.GET.get("user")
-        searched_users = User.search_by_user(search_term)
+    if 'profile' in request.GET and request.GET["profile"]:
+        search_term = request.GET.get("profile")
+        searched_users = Profile.search_by_user(search_term)
         message = f"{search_term}"
 
         return render(request, '/search.html',{"message":message,"users": searched_users})

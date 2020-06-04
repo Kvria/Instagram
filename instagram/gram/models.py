@@ -1,39 +1,45 @@
+from django.contrib.auth.models import User
 from django.db import models
-
 # Create your models here
+
+
 
 class Image(models.Model):
     image = models.ImageField(blank = True, null = True)
-    image_name = models.Charfield(max_length = 50)
+    image_name = models.CharField(max_length = 50)
     image_caption = models.TextField
-    profile = models.ForeignKey('User', on_delete=models.CASCADE)
-    post_date = models.DateTimeField(default=Timezone.now)
-    comments = models.ForeignKey('Comment', on_delete=models.CASCADE)
+    profile = models.ForeignKey(User, on_delete=models.CASCADE)
+    post_date = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
     def save_image(self):
         self.save()
 
-    def search_by_user(cls,search_term):
-        users = cls.objects.filter(title__icontains=search_term)
-        return users
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image=models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    objects = models.Manager()
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f'{self.user} Profile'
 
     def save_profile(self):
         self.save()
 
-class Comment(models.Model):class Comment(models.Model):
+    @classmethod
+    def search_by_user(cls,search_term):
+        users = User.objects.filter(username__icontains=search_term)
+        return users
+
+class Comment(models.Model):
     image = models.ForeignKey(Image, blank=True, on_delete=models.CASCADE, related_name='comment')
     commenter = models.ForeignKey(User, blank=True)
     comment = models.TextField()
+    objects = models.Manager()
 
     def save_comment(self):
         self.save()
