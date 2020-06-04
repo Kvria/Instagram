@@ -6,6 +6,7 @@ from django.db import models
 
 class Image(models.Model):
     image = models.ImageField(blank = True, null = True)
+    image_id = models.IntegerField(primary_key = True)
     image_name = models.CharField(max_length = 50)
     image_caption = models.TextField
     profile = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -18,10 +19,13 @@ class Image(models.Model):
     def save_image(self):
         self.save()
 
+    def delete_image(self):
+        self.delete()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    profile_pic = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    bio = models.TextField(max_length = 300)
     objects = models.Manager()
 
     def __str__(self):

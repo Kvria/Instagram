@@ -1,20 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Image,Profile,Comment,User
-from .forms import SignupForm, UserUpdateForm, ProfileUpdateForm, CommentsForm, Uploads
+from .forms import UserUpdateForm, ProfileUpdateForm, CommentsForm, Uploads
 
 # Create your views here.
 @login_required(login_url = "accounts/login")
-def index(request):
+def home(request):
     images=Image.objects.all()
     return render(request,'index.html',{"images":images})
 
-def welcome(request):
-    if request.user.is_authenticated():
-        return redirect(index)
-    else:
-        form = SignupForm()
-    return render(request,'registration/login.html', {"form":form})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -59,7 +53,7 @@ def comment(request,image_id):
            print(the_comments)
 
 
-       return redirect(index)
+       return redirect('home')
 
    else:
        form = CommentsForm()

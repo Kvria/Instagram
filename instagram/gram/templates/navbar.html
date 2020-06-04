@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand brand" href="{% url 'welcome' %}" id="logo" style="color:rgb(27, 26, 26)"><i class="fab fa-instagram"></i> <span>|</span> Instagram</a>
+        <a class="navbar-brand brand" href="{% url 'home' %}" id="logo" style="color:rgb(27, 26, 26)"><i class="fab fa-instagram"></i> <span>|</span> Instagram</a>
       </div>
        <!-- Adding a search form  -->
        <div class="col-sm-4 col-md-4">
@@ -16,10 +16,11 @@
       </div>
       <div class="col-md-2 col-lg-2 icons" >
   
-          <a class="navbar-brand" href="{% url 'welcome' %}""><span class="fas fa-compass"></span></a>
-          <a class="navbar-brand" href="{% url 'welcome' %}""><span class="fas fa-heart"></span></a>
+          <a class="navbar-brand" href="{% url 'home' %}"><span class="fas fa-compass"></span></a>
+          <a class="navbar-brand" href="/logout"><span class="fas fa-heart"></span></a>
           <a class="navbar-brand" href="/profile"><span class="fas fa-user"></span></a>
-          <a class="navbar-brand" href="/accounts/login"><span class="fas fa-sign-out-alt"></span></a>
+          <a class='btn btn-default' href="/accounts/login">Login</a>
+        </li>
           <a class="navbar-brand" href="{%url 'new_post'%}">Create Post</a>
       </div>
       
