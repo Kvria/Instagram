@@ -39,7 +39,7 @@
                         <h5 style=" font-size: 20px !important;"><strong>{{image.profile.username}}</strong>
                             {{image.image_caption}}</h5>
                         <p>{{image.count_likes}} likes</p>
-                        <p class=""> {{image.comment.count}} comments </p>
+                
                         <div class="card-body">
                             {% for comment in comments %}
                             {% if comment.image_id == image.image_id%}

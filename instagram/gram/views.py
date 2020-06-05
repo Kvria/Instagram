@@ -6,7 +6,7 @@ from .forms import UserUpdateForm, ProfileUpdateForm, CommentsForm, Uploads
 # Create your views here.
 @login_required(login_url = "accounts/login")
 def home(request):
-    images=Image.objects.all()
+    images = Image.objects.all()
     return render(request,'index.html',{"images":images})
 
 
@@ -28,10 +28,7 @@ def profile(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
 
-    context = {
-            'u_form': u_form
-
-    }
+    context = {'u_form': u_form}
 
     return render(request, 'registration/profile.html',locals())
 

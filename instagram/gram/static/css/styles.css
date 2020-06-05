@@ -1,0 +1,53 @@
+.navbar{
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, .2);
+    height: 77px;
+    transition: .2s ease-in-out;
+    background-color: #ffff;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+  }
+  .navbar:hover{
+    box-shadow: 0 2px 5px 0 rgba(148, 146, 146, 0.2);
+    transition: .2s ease-in-out;
+  }
+  .brand{
+    font-family: 'Lobster', cursive;
+    line-height: 38px;
+    font-size: 25px;
+    font-weight: 100;
+
+  }
+  .navbar i{
+    line-height: 38px;
+    margin-left: 200px;
+    padding: 10px;
+  }
+  span{
+    font-family: 'Tangerine', cursive;
+  }
+  .navbar input{
+    margin-top:19px;
+  }
+  input {
+  padding:10px;
+	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+.icons ul{
+  display:block ;
+  list-style: none;
+}
+
+p{
+    color: #999;
+}
+input{
+   margin-left: 150px
+   wi
+ }
+
