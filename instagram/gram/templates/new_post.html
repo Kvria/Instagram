@@ -12,19 +12,19 @@
 
 
 </head>
-{ %block content% }
+
 <body>
 <div class="container">
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4"></div>
     <div class="col-md-4">
-      {% bootstrap_form form%}
-      <form  action="{%url 'new_post'%}" method="post" enctype="multipart/form-data">
-        {%csrf_token%}
-
-        <div class="form-group">
-          <input type="submit" class="btn btn-success btn-lg" value="Post">
+      <div class="col-md-4 form-group" style="margin-right: 100px; margin-left: 100px;">
+        <h2><b>Post new image</b></h2>
+        {% bootstrap_form form%}
+        <form  action="{%url 'new_post'%}" method="POST" enctype="multipart/form-data">
+          {%csrf_token%}
+        <input type="submit" class="btn btn-success btn-lg" value="Post">
         </div>
       </form>
     </div>
@@ -37,7 +37,12 @@
 
 </body>
 <style>
-
+body{
+  margin: 10px;
+}
+form{
+  text-align: center;
+}
 </style>
-{ %endblock% }
+
 </html>
