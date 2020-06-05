@@ -30,6 +30,6 @@ class CommentsForm(forms.ModelForm):
 class Uploads(forms.ModelForm):
     class Meta:
         model=Image
-        exclude = ['user_id']
+        exclude = ['profile','post_date']
         
         

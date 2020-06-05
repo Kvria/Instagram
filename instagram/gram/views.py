@@ -34,7 +34,7 @@ def profile(request):
 
 def comment(request,image_id):
    current_user=request.user
-   image = Image.objects.get(id=image_id)
+   image = Image.objects.get(id=id)
    profile_user = User.objects.get(username=current_user)
    the_comments = Comment.objects.all()
    print(the_comments)
@@ -76,7 +76,7 @@ def post_new(request):
         form = Uploads(request.POST, request.FILES)
         if form.is_valid():
             user_img = form.save(commit=False)
-            user_img.user_id = current_user
+            user_img.profile = current_user
             user_img.save()
         return redirect('home')
     else:
