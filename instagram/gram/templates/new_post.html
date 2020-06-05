@@ -9,24 +9,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {{form.media}}
-
+  {% load bootstrap3 %} 
+  {% load staticfiles %}
 
 </head>
 
 <body>
-<div class="container">
+<div class="container"style ="background-color: #A57982;">
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4"></div>
     <div class="col-md-4">
       <div class="col-md-4 form-group" style="margin-right: 100px; margin-left: 100px;">
         <h2><b>Post new image</b></h2>
+        <form  action="{%url 'new_post'%}" method="POST" enctype="multipart/form-data"></form>
         {% bootstrap_form form%}
-        <form  action="{%url 'new_post'%}" method="POST" enctype="multipart/form-data">
-          {%csrf_token%}
+        {%csrf_token%}
+        
         <input type="submit" class="btn btn-success btn-lg" value="Post">
-        </div>
-      </form>
+        </form>
     </div>
   </div>
 </div>
@@ -37,12 +38,7 @@
 
 </body>
 <style>
-body{
-  margin: 10px;
-}
-form{
-  text-align: center;
-}
+
 </style>
 
 </html>
