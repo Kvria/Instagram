@@ -4,7 +4,6 @@ DEBUG=True
 DB_NAME='instaclone'
 DB_USER='patricia'
 DB_PASSWORD='wanja2002'
-DB_HOST='127.0.0.1'
 MODE='dev' #set to 'prod' in production
 ALLOWED_HOSTS='*'
 DISABLE_COLLECTSTATIC=1
