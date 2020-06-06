@@ -1,0 +1,10 @@
+#just an example, dont share your .env settings
+SECRET_KEY='j7x5_r%5^shf#mjyl^slx27*ses_&n3+*u7#%2)si8p%uped5+'
+DEBUG=True 
+DB_NAME='instaclone'
+DB_USER='patricia'
+DB_PASSWORD='wanja2002'
+DB_HOST='127.0.0.1'
+MODE='dev' #set to 'prod' in production
+ALLOWED_HOSTS='.localhost', '.herokuapp.com', '.127.0.0.1'
+DISABLE_COLLECTSTATIC=1
