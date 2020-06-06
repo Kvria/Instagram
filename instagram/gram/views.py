@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Image,Profile,Comment,User
 from .forms import UserUpdateForm, ProfileUpdateForm, CommentsForm, Uploads
+# from django.http import HttpResponse, HttpResponseRedirect
+# from django.urls import reverse
 
 # Create your views here.
 @login_required(login_url = "accounts/login")
@@ -48,13 +50,9 @@ def comment(request,image_id):
            comment.save()
 
            print(the_comments)
-
-
        return redirect('home')
-
    else:
        form = CommentsForm()
-
    return render(request, 'comments.html', locals())
 
 def search_users(request):
@@ -82,3 +80,9 @@ def post_new(request):
     else:
         form = Uploads()
     return render(request, "new_post.html", {"form": form})
+
+# def like(request, id):
+#     post = Image.objects.get(id = id)
+#     post.likes += 1
+#     post.save()
+#     return HttpResponseRedirect(reverse("index"))
