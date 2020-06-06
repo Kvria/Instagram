@@ -1,9 +1,10 @@
-#just an example, dont share your .env settings
 SECRET_KEY='j7x5_r%5^shf#mjyl^slx27*ses_&n3+*u7#%2)si8p%uped5+'
 DEBUG=True 
 DB_NAME='instaclone'
 DB_USER='patricia'
 DB_PASSWORD='wanja2002'
-MODE='dev' #set to 'prod' in production
+DATABASE_URL='postgresql://patricia:wanja2002@localhost/instaclone'
+MODE='prod' 
+DB_HOST='127.0.0.1'
 ALLOWED_HOSTS='*'
 DISABLE_COLLECTSTATIC=1
